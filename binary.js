@@ -20,38 +20,39 @@ function ownSort(arr) {
 }
 
 
-// function binary_search (search, array, start = 0, end = array.length) {
+function binary_search (search, array, start = 0, end = array.length) {
+    let mid = Math.floor((start+end)/2)
+    // console.log('start' + start);
+    // console.log('mid' + mid);
+    // console.log('end' + end);
+    if (array[mid] == search){
+      return mid
+    } else if (start == mid) {
+      return -1
+    } else if (array[mid] > search){
+      end = mid-1
+      return binary_search(search, array, start, end)
+    } else if (array[mid] < search){
+      start = mid+1
+      return binary_search(search, array, start, end)
+    }
+}
+
+// function binary_search (search, array) {
+//   let start = 0
+//   let end = array.length
+//   while(start <= end){
 //     let mid = Math.floor((start+end)/2)
-//     if(start == end){
-//       return -1
-//     } else if (end == 1){
-//       return array[mid]
-//     } else if (array[mid] == search){
+//     if(array[mid] == search){
 //       return mid
 //     } else if (array[mid] > search){
 //       end = mid-1
-//       return binary_search(search, array, start, end)
 //     } else if (array[mid] < search){
 //       start = mid+1
-//       return binary_search(search, array, start, end)
 //     }
+//   }
+//   return -1;
 // }
-
-function binary_search (search, array) {
-  let start = 0
-  let end = array.length
-  while(start <= end){
-    let mid = Math.floor((start+end)/2)
-    if(array[mid] == search){
-      return mid
-    } else if (array[mid] > search){
-      end = mid-1
-    } else if (array[mid] < search){
-      start = mid+1
-    }
-  }
-  return -1;
-}
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
