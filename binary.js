@@ -20,8 +20,19 @@ function ownSort(arr) {
 }
 
 function binary_search (search, array) {
-  // Your searching code
-  return 0;
+  let start = 0
+  let end = array.length
+  while(start <= end){
+    let mid = Math.floor((start+end)/2)
+    if(array[mid] == search){
+      return mid
+    } else if (array[mid] > search){
+      end = mid-1
+    } else if (array[mid] < search){
+      start = mid+1
+    }
+  }
+  return -1;
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
