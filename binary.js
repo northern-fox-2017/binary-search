@@ -1,7 +1,7 @@
 'use strict'
 
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
-var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
+var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55, 44]
 // console.log(Math.min(...testArrayGenap));
 function ownSort(arr) {
   for(let i=0;i<arr.length;i++){
@@ -24,7 +24,7 @@ function ownSort(arr) {
 function binary_search (search, array) {
 
   var firstIndex  = 0,
-      lastIndex   = array.length - 1,
+      lastIndex   = array.length -1,
       middleIndex = Math.floor((lastIndex + firstIndex)/2);
 
   while(array[middleIndex] != search && firstIndex < lastIndex)
