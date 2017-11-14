@@ -2,7 +2,7 @@
 
 
 ## function ownSort(arr)
-// melakukan sort dengan metode insertion sort:
+// melakukan sort dengan metode selection sort:
 
 //PSEUDOCODE
 for i=0 to array.length 
