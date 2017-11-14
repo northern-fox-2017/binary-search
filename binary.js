@@ -21,29 +21,38 @@ function ownSort(arr) {
 
 
 
-function binary_search (search, array) {
+function binary_search (search, array, firstIndex  = 0, lastIndex   = array.length) {
 
-  let firstIndex  = 0
-  let lastIndex   = array.length -1
+  // let firstIndex  = 0
+  // let lastIndex   = array.length -1
   let middleIndex = Math.floor((lastIndex + firstIndex)/2);
 
-  while(array[middleIndex] != search && firstIndex < lastIndex)
-  {
-     if (search < array[middleIndex])
-      {
-          lastIndex = middleIndex - 1;
-      }
-    else if (search > array[middleIndex])
-      {
-          firstIndex = middleIndex + 1;
-      }
-      middleIndex = Math.floor((lastIndex + firstIndex)/2);
-  }
-  if(array[middleIndex] != search){
-    return -1
-  }else{
+  // while(array[middleIndex] != search && firstIndex < lastIndex)
+  // {
+  if(array[middleIndex]==search){
     return middleIndex
+  }else{
+     if(firstIndex == lastIndex){
+       return -1
+      }
+     else if(search < array[middleIndex]){
+         lastIndex = middleIndex - 1;
+         return binary_search(search,array,firstIndex,lastIndex)
+      }
+
+      else if (search > array[middleIndex]){
+         firstIndex = middleIndex + 1;
+         return binary_search(search,array,firstIndex,lastIndex)
+      }
   }
+    // middleIndex = Math.floor((lastIndex + firstIndex)/2);
+  // }
+
+  // if(array[middleIndex] != search){
+  //   return -1
+  // }else{
+  //   return middleIndex
+  // }
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
@@ -56,10 +65,10 @@ console.log(binary_search(8, arrayGenapSorted))
 console.log(binary_search(10, arrayGenapSorted))
 console.log(binary_search(33, arrayGenapSorted))
 //
-console.log('ini yang ganjil '+arrayGanjilSorted);
-console.log(binary_search(53, arrayGanjilSorted))
-console.log(binary_search(3, arrayGanjilSorted))
-console.log(binary_search(2, arrayGanjilSorted))
+// console.log('ini yang ganjil '+arrayGanjilSorted);
+// console.log(binary_search(53, arrayGanjilSorted))
+// console.log(binary_search(3, arrayGanjilSorted))
+// console.log(binary_search(2, arrayGanjilSorted))
 
 module.exports = {
   binary_search
