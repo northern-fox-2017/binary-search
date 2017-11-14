@@ -18,32 +18,29 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
-  let end = array.length
-  let start = 0
+function binary_search (search, array, start = 0, end = array.length ) {
+
   let mid = Math.floor((end + start) / 2)
 
-  while(start <= end){
-    if(search == array[mid]){
-      return mid
-    }
-    else if(search < array[mid]){
-      end = mid -1
-      mid = Math.floor((end + start) / 2)
-    }
-    else if(search > array[mid]){
-      start = mid + 1
-      mid = Math.floor((end + start) / 2)
-    }
+  if(start > end){
+    return -1
   }
-
-  return -1;
+  else if(search == array[mid]){
+    return mid
+  }
+  else if(search < array[mid]){
+    return binary_search(search, array, start, end = mid -1)
+  }
+  else if(search > array[mid]){
+    return binary_search(search, array, start = mid + 1, end)
+  }
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
+// [ 8, 10, 10, 18, 22, 22, 32, 40, 90 ]
 var arrayGanjilSorted = ownSort(testArrayGanjil)
+// [ 3, 21, 31, 44, 53, 53, 55, 77, 85, 89 ]
 
-// Driver code
 console.log(binary_search(8, arrayGenapSorted))
 console.log(binary_search(10, arrayGenapSorted))
 console.log(binary_search(33, arrayGenapSorted))
