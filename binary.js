@@ -21,7 +21,7 @@ function binary_search (search, array) {
 	var min = 0, max = array.length - 1;
 	var result = -1;
 	var i = 0;
-	while(i < max){
+	while(i < array.length){
 		var mid = Math.floor((min + max) / 2);
 		if(search === array[mid]){
 			result = mid;
