@@ -22,35 +22,27 @@ function binarySearch (search, array) {
   function midIdx(beginIdx, endIdx){
     return Math.floor( (beginIdx + endIdx)/ 2 ) 
   }
-
-  let beginIdx = 0;
-  let endIdx = array.length -1;
   let midIndex = midIdx(0, array.length - 1);
-
-  if (array.length === 0){
+  if ( array.length === 0 ){
     return -1;
-  }else {
+  } else {
     if( array[midIndex] === search){
       return midIndex;
     } else if ( array[midIndex] > search ){
-      let leftArr = array.slice(0,midIndex)
-      return binarySearch(search, leftArr)
+      let leftArr = array.slice(0, midIndex);
+      return binarySearch(search, leftArr);
     } else {
       let rightArr = array.slice(midIndex+1, array.length)
-      if (binarySearch(search, rightArr) === -1){
+      if ( binarySearch(search, rightArr) === -1 ){
         return -1;
       } else {
-        return (midIndex + 1) + binarySearch(search, rightArr)
+        return ( midIndex + 1 ) + binarySearch(search, rightArr);
       }
     }
   }
-  
 }
-
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
-
-
 
 // Driver code
 console.log(binarySearch(8, arrayGenapSorted))
