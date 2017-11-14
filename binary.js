@@ -20,11 +20,18 @@ function ownSort(arr) {
 
 function binary_search(search, array ,minMax) {
   // Your searching code
-  let nilaiTengah = 0, min =minMax[0], max = minMax[1];
+  let nilaiTengah = 0,min,max;// min =minMax[0], max = minMax[1];
+  if(minMax===undefined){
+    min=0;
+    max=array.length-1;
+  }else{
+    min=minMax[0];
+  }
   if (min > max) {
     return -1
   }else{
-    nilaiTengah = Math.floor(min + max / 2);
+    nilaiTengah = Math.floor(
+    max=minMax[1];min + max / 2);
     if (array[nilaiTengah] === search) {
       return nilaiTengah;
     } else if (search < array[nilaiTengah]) {
@@ -39,13 +46,13 @@ var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 
 // Driver code
-console.log(binary_search(8, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
-console.log(binary_search(10, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
-console.log(binary_search(33, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(8, arrayGenapSorted))
+console.log(binary_search(10, arrayGenapSorted))
+console.log(binary_search(33, arrayGenapSorted))
 
-console.log(binary_search(53, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
-console.log(binary_search(3, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
-console.log(binary_search(2, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(53, arrayGanjilSorted))
+console.log(binary_search(3, arrayGanjilSorted))
+console.log(binary_search(2, arrayGanjilSorted))
 
 module.exports = {
   binary_search
