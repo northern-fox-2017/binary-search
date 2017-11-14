@@ -23,36 +23,42 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
+function binary_search (search, array, awal = 0, akhir = array.length-1) {
   // Your searching code
-  let awal = 0;
-  let akhir = array.length-1;
-  let midIndex = Math.floor((awal + akhir) / 2)
+  let start = awal;
+  let end = akhir;
+  let midIndex = Math.floor((awal + akhir) / 2);
 
-  while (search !== array[midIndex]) {
-    if (midIndex == akhir || midIndex == awal) {
-      return -1;
+  if (search == array[midIndex]) {
+    return midIndex;
+  }else {
+    if (midIndex == start && midIndex == end) {
+      return -1
     }else if (search < array[midIndex]) {
-      akhir = midIndex -1;
-      midIndex =  Math.floor((awal + akhir) / 2)
+      end = midIndex - 1;
+      midIndex =  Math.floor((start + end) / 2)
+      return binary_search (search, array, start, end)
       debugger;
     }else if (search > array[midIndex]) {
-      awal = midIndex + 1;
-      midIndex = Math.floor((awal + akhir) / 2)
+      start = midIndex + 1;
+      midIndex = Math.floor((start + end) / 2)
+      return binary_search (search, array, start, end)
       debugger;
     }
   }
+
   debugger;
 
-  return midIndex;
 }
+
+// awal - akhir - tengah
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 
 // Driver code
 console.log(binary_search(8, arrayGenapSorted))
-console.log(binary_search(10, arrayGenapSorted))
+console.log(binary_search(90, arrayGenapSorted))
 console.log(binary_search(11, arrayGenapSorted))
 //
 console.log(binary_search(53, arrayGanjilSorted))
