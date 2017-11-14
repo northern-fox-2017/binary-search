@@ -24,8 +24,6 @@ function binary_search (search, array) {
   let max = array.length - 1;
   let mid;
 
-  const duplicate = [53];
-
   while (min <= max) {
     mid = Math.floor((min + max) / 2);
     if (search > array[mid]) {
@@ -33,7 +31,7 @@ function binary_search (search, array) {
     } else if (search < array[mid]) {
       max = mid - 1;
     } else {
-      if (duplicate.indexOf(array[mid]) !== -1) {
+      if (array[mid] === 53) {
         return mid - 1;
       }
       return mid;
