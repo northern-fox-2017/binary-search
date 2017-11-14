@@ -1,3 +1,4 @@
+
 'use strict'
 
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
@@ -18,10 +19,8 @@ function ownSort(arr) {
 }
 // console.log(ownSort(testArrayGanjil))
 
-function binary_search (search,array) {
-  // Your searching code
-  var min = 0;
-  var max = array.length 
+function binary_search (search,array,min = 0,max =array.length-1) {
+  // Your searching code    
   var guess;
   while(min <= max) {
     guess = Math.floor((max + min) / 2);
@@ -29,28 +28,23 @@ function binary_search (search,array) {
         return guess;
     }
 
-    else if (array[guess] < search) {
-        min = guess + 1;
+    if (array[guess] < search) {    
+        return binary_search (search,array, guess+1, max) 
     }
-    else {
-        max = guess - 1;
-    }
-
-  }
-  return -1
     
+    if (array[guess] > search) {      
+      return binary_search (search,array,min, guess-1) 
+    }
+  }
+  return -1    
 }
   
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 console.log(arrayGenapSorted)
 console.log(arrayGanjilSorted)
-// var arr1 = [1,2,3,4,5]
-// var arr2 = [13,19,24,29,32,37,43]
-// console.log(binary_search(3, arr1))
-// console.log(binary_search(3, arr2))
 
-// // Driver code
+// Driver code
 console.log(binary_search(8, arrayGenapSorted))
 console.log(binary_search(10, arrayGenapSorted))
 console.log(binary_search(33, arrayGenapSorted))
