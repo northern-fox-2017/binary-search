@@ -1,7 +1,7 @@
 'use strict'
 
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
-var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55, 10]
+var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55, 44]
 
 function ownSort(arr) {
   // Your sorting code
@@ -18,35 +18,34 @@ function ownSort(arr) {
   return arr;
 }
 
-function binary_search(search, array) {
+function binary_search(search, array ,minMax) {
   // Your searching code
-
-  let nilaiTengah = 0, min = 0, max = array.length - 1;
-
-  while (min <= max) {
+  let nilaiTengah = 0, min =minMax[0], max = minMax[1];
+  if (min > max) {
+    return -1
+  }else{
     nilaiTengah = Math.floor(min + max / 2);
     if (array[nilaiTengah] === search) {
       return nilaiTengah;
     } else if (search < array[nilaiTengah]) {
-      max = nilaiTengah - 1
+      return binary_search(search,array,[min,max=nilaiTengah-1])
     } else {
-      min = nilaiTengah + 1
+      return binary_search(search,array,[max,min=nilaiTengah+1])
     }
   }
-  return -1
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 
 // Driver code
-console.log(binary_search(8, arrayGenapSorted))
-console.log(binary_search(10, arrayGenapSorted))
-console.log(binary_search(33, arrayGenapSorted))
+console.log(binary_search(8, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(10, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(33, arrayGenapSorted,[0,arrayGenapSorted.length-1]))
 
-console.log(binary_search(53, arrayGanjilSorted))
-console.log(binary_search(3, arrayGanjilSorted))
-console.log(binary_search(2, arrayGanjilSorted))
+console.log(binary_search(53, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(3, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
+console.log(binary_search(2, arrayGanjilSorted,[0,arrayGenapSorted.length-1]))
 
 module.exports = {
   binary_search
