@@ -1,7 +1,7 @@
 'use strict'
 
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
-var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55,44]
+var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55, 44]
 // var test = [1,3,4,6,7,9,5]
 
 function ownSort(arr) {
