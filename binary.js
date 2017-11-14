@@ -19,6 +19,24 @@ function ownSort(arr) {
   return arr
 }
 
+
+// function binary_search (search, array, start = 0, end = array.length) {
+//     let mid = Math.floor((start+end)/2)
+//     if(start == end){
+//       return -1
+//     } else if (end == 1){
+//       return array[mid]
+//     } else if (array[mid] == search){
+//       return mid
+//     } else if (array[mid] > search){
+//       end = mid-1
+//       return binary_search(search, array, start, end)
+//     } else if (array[mid] < search){
+//       start = mid+1
+//       return binary_search(search, array, start, end)
+//     }
+// }
+
 function binary_search (search, array) {
   let start = 0
   let end = array.length
