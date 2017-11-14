@@ -26,12 +26,12 @@ function binary_search(search, array ,minMax) {
     max=array.length-1;
   }else{
     min=minMax[0];
+    max=minMax[1];
   }
   if (min > max) {
     return -1
   }else{
-    nilaiTengah = Math.floor(
-    max=minMax[1];min + max / 2);
+    nilaiTengah = Math.floor(min + max / 2);
     if (array[nilaiTengah] === search) {
       return nilaiTengah;
     } else if (search < array[nilaiTengah]) {
