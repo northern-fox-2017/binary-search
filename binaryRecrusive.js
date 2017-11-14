@@ -17,25 +17,30 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
-	var min = 0, max = array.length - 1;
-	var result = -1;
-	var i = 0;
-	while(i < array.length){
-		var mid = Math.floor((min + max) / 2);
+function binary_search (search, array, min = 0, max = array.length - 1, mid = Math.floor((min + max) / 2), result = 0) {
+	debugger
+	if(result < array.length){
 		if(search === array[mid]){
-			result = mid;
+			return mid;
 		}else{
 			if(search < array[mid]){
-				min = 0, max = mid - 1;
+				min = 0;
+				max = mid - 1;
+				mid = Math.floor((min + max) / 2);
+				result += 1;
+				return binary_search(search, array, min, max, mid, result);
 			}else{
 				min = mid + 1;
+				max = array.length - 1;
+				mid = Math.floor((min + max) / 2);
+				result += 1;
+				return binary_search(search, array, min, max, mid, result);
 			}
-			
 		}
-		i++;
+		
+	}else{
+		return -1;
 	}
-	return result;
 	
 }
 
