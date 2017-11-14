@@ -17,30 +17,57 @@ function ownSort(arr) {
   return arr
 }
 
-function binary_search (search, array) {
-  var result = -1;
-  var startIndex = 0;
-  var stopIndex = array.length-1;
-  var midIndex = Math.floor((startIndex+stopIndex)/2);
-  while (search != array[midIndex] && startIndex < stopIndex) {
-    if (array[midIndex]< search) {
-      startIndex = midIndex;
-    }
-    else if (array[midIndex]> search) {
-      stopIndex = midIndex-1;
-    }
+function binary_search (search, array, startIndex=0, stopIndex=array.length-1, midIndex) {
+  //var midIndex = Math.floor((startIndex+stopIndex)/2);
     midIndex = Math.floor((startIndex+stopIndex)/2);
-  }
-  return (array[midIndex]==search)? midIndex : -1;
+    debugger;
+    if (array[midIndex]==search) {
+      return midIndex;
+    }
+    else {
+      if (array[midIndex]!=search && midIndex == startIndex && midIndex == stopIndex) {
+        return -1;
+      }
+      else if (array[midIndex]< search) {
+        startIndex = midIndex;
+        return binary_search(search, array, startIndex, stopIndex, midIndex)
+      }
+      else if (array[midIndex]> search) {
+        stopIndex = midIndex-1;
+        return binary_search(search, array, startIndex, stopIndex, midIndex)
+      }
+    }
+
+    // return (array[midIndex]==search)? midIndex : -1;
+    // else if (a) {
+    //
+    // }
 }
+
+// function binary_search (search, array) {
+//   var result = -1;
+//   var startIndex = 0;
+//   var stopIndex = array.length-1;
+//   var midIndex = Math.floor((startIndex+stopIndex)/2);
+//   while (search != array[midIndex] && startIndex < stopIndex) {
+//     if (array[midIndex]< search) {
+//       startIndex = midIndex;
+//     }
+//     else if (array[midIndex]> search) {
+//       stopIndex = midIndex-1;
+//     }
+//     midIndex = Math.floor((startIndex+stopIndex)/2);
+//   }
+//   return (array[midIndex]==search)? midIndex : -1;
+// }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 
 // Driver code
-console.log(binary_search(8, arrayGenapSorted))
-console.log(binary_search(10, arrayGenapSorted))
-console.log(binary_search(33, arrayGenapSorted))
+ console.log(binary_search(8, arrayGenapSorted))
+ console.log(binary_search(10, arrayGenapSorted))
+ console.log(binary_search(33, arrayGenapSorted))
 console.log(binary_search(22, arrayGenapSorted))
 
 console.log(binary_search(53, arrayGanjilSorted))
