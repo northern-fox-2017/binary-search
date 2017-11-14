@@ -1,0 +1,41 @@
+=========    PSEUDOCODEs   =============
+
+
+## function ownSort(arr)
+// melakukan sort dengan metode insertion sort:
+
+//PSEUDOCODE
+for i=0 to array.length 
+    j=i
+    while arr[j] < arr[j-1] and j>=0
+        swap arr[j] with arr [j-1]
+        j--
+
+    
+
+## function binarySearch(search, array)
+// mencari 'search' di dalam 'array' dan mereturn nilai indeks 'search berada'
+// return -1 apabila tidak ditemukan
+
+// STEPS
+1. buat fungsi midIdx(beginIdx, endIdx): yang dapat mencari index tengah
+2. urutkan array input
+3. cari mid index dari array
+4. IF array[midIdx] == search THEN RETURN midIdx
+5. IF array[midIdx] > search THEN lakukan kembali untuk sisi kiri
+6. IF array[midIdx] < search THEN lakukan kembali untuk sisi kanan
+
+//PSEUDOCODE
+
+function midIdx(beginIdx, endIdx){
+    return floor( (beginIdx + endIdx) /2)
+}
+
+midIdx(0, array.length)
+
+IF array[midIdx] == search
+    return midIdx
+ELSE IF array[midIdx] > search
+    return binarySearch(search, left-side-array)
+ELSE IF array[midIdx] < search
+    return binarySearch(search, right-side-array)
