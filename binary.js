@@ -23,9 +23,9 @@ function ownSort(arr) {
 
 function binary_search (search, array) {
 
-  var firstIndex  = 0,
-      lastIndex   = array.length -1,
-      middleIndex = Math.floor((lastIndex + firstIndex)/2);
+  let firstIndex  = 0
+  let lastIndex   = array.length -1
+  let middleIndex = Math.floor((lastIndex + firstIndex)/2);
 
   while(array[middleIndex] != search && firstIndex < lastIndex)
   {
